@@ -135,6 +135,40 @@ soccer_lib::calc_max_velocity( const AngleDeg & target_angle,
     return vel1;
 }
 
+Vector2D
+soccer_lib::inertia_n_step_point( Vector2D first_ball_pos,
+                                  Vector2D first_ball_vel,
+                                  int cycle,
+                                  double ball_decay )
+{
+    Vector2D next_ball_pos = first_ball_pos;
+    Vector2D next_ball_vel = first_ball_vel;
+    
+    for( int i = 0; i < cycle ; i++ )
+    {
+        next_ball_pos += next_ball_vel;
+        next_ball_vel = next_ball_vel * ball_decay;
+    }
+
+    return next_ball_pos;
+}
+
+Vector2D
+soccer_lib::player_interia_pos( Vector2D player_pos,
+                                Vector2D player_vel,
+                                int cycle )
+{
+    Vector2D next_player_pos = player_pos;
+    Vector2D next_player_vel = player_vel;
+    
+    for( int i = 0; i < cycle; i++ )
+    {
+        next_player_pos += player_vel;
+        next_player_vel = next_player_vel * player_decay;
+    }
+
+    return next_player_pos;
+}
 
 
 

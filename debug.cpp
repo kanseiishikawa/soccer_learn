@@ -7,5 +7,6 @@ using namespace rcsc;
 
 int main()
 {
-    std::cout<< "ok" <<"\n";
+    soccer_lib sl;
+    std::cout<< sl.ball_accel_max <<"\n";
 }
